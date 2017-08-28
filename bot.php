@@ -16,8 +16,8 @@ div {
 </html>
 <?php
 if (file_get_contents("time_clean.txt") <= (time() - 6 * 60)) {
-    @file_get_contents("http://botvip-botvip.7e14.starter-us-west-2.openshiftapps.com/xoa.php");
-    @file_get_contents("https://huyenthoai.pro/xoa.php");
+    @file_get_contents("http://botvip.huyenthoai.pro/xoa.php");
+    @file_get_contents("http://huyenthoai.pro/xoa.php");
     @file_put_contents("time_clean.txt", time());
 }
 //Include acc
@@ -290,7 +290,80 @@ for ($i = 1; $i < 15; $i++) {
                                 //$iconf  = [img]http://i.imgur.com/T5zBkOy.png[/img]';
                                 $so_sv  = $depfile[2] + 1;
                                 
-                                } */ elseif (count(explode('depfile.com', $link)) > 1) {
+                                } */ elseif (count(explode('depfile', $link)) > 1 ) {
+                                    if (Check_Vip($viplist, $name) == true || Check_Vip2($viplist2, $name) == true) {
+                                        if ($bot_bw == 'true') {
+                                            $limit = "10 GB";
+                                            
+                                            $bandwith = Check_Bandwith($size_file, convert_size_bw($filesize), $limit);
+                                            if ($bandwith != false) {
+                                                if (strpos($filesize, 'kb') != 0) {
+                                                    $entry1 .= Get_Link_Host($link, $depfile[0], $depfile[1], $download_file2, $ipmem);
+                                                    if (stristr($entry1, "Please try again")) {
+                                                    } else {
+                                                        $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                        Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                    }
+                                                    $so_sv = $depfile[2] + 1;
+                                                } elseif (strpos($filesize, 'mb') != 0) {
+                                                    $size      = explode(".", $filesize);
+                                                    $filesizes = trim($size[0]);
+                                                    if ($filesize > 10250) {
+                                                        $entry1 = '' . $iconf . '[b][big]  [den]' . $host_check . '[/mau][vang] limit  10 GB [/mau] [br][color=purple] Link của bạn có size là [den](' . strtoupper($filesize) . ')  [/mau] [/big][/color] [/b]';
+                                                        if (stristr($entry1, "Please try again")) {
+                                                        } else {
+                                                            $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                            Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                        }
+                                                    } else {
+                                                        $entry1 .= Get_Link_Host($link, $depfile[0], $depfile[1], $download_file2, $ipmem);
+                                                        if (stristr($entry1, "Please try again")) {
+                                                        } else {
+                                                            $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                            Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                        }
+                                                        $so_sv = $depfile[2] + 1;
+                                                    }
+                                                } elseif (strpos($filesize, 'gb') != 0) {
+                                                    $size      = explode(".", $filesize);
+                                                    $filesizes = trim($size[0]);
+                                                    if ($filesize > 10) {
+                                                        $entry1 = '' . $iconf . '[b][big]  [den]' . $host_check . '[/mau][vang] limit  5 GB [/mau] [br][color=purple] Link của bạn có size là [den](' . strtoupper($filesize) . ')  [/mau] [/big][/color] [/b]';
+                                                        if (stristr($entry1, "Please try again")) {
+                                                        } else {
+                                                            $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                            Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                        }
+                                                    } else {
+                                                        $entry1 .= Get_Link_Host($link, $depfile[0], $depfile[1], $download_file2, $ipmem);
+                                                        if (stristr($entry1, "Please try again")) {
+                                                        } else {
+                                                            $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                            Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                        }
+                                                        $so_sv = $depfile[2] + 1;
+                                                    }
+                                                } else {
+                                                    $entry1 .= Get_Link_Host($link, $depfile[0], $depfile[1], $download_file2, $ipmem);
+                                                    if (stristr($entry1, "Please try again")) {
+                                                    } else {
+                                                        $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                        Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                    }
+                                                    $so_sv = $depfile[2] + 1;
+                                                }
+                                            } else {
+                                                $entry1 .= '[b][color=green] You\'ve used up ' . $limit . ' for ' . $host_check . ' today. [/color]  [br] [color=blue] Bạn đã sử dụng hết ' . $limit . ' băng thông ' . $host_check . ' trong hôm nay. [/color] [/b]';
+                                                
+                                            }
+                                        }
+                                    } elseif (Check_SuperAdmin($superadmin, $name) == true || Check_Admin($adminlist, $name) == true || Check_Manager($manager, $name) == true) {
+                                        
+                                        $entry1 = Get_Link_Host($link, $depfile[0], $depfile[1], $download_file2, $ipmem);
+                                        $so_sv  = $depfile[2] + 1;
+                                    }
+                                    
+                                } elseif (count(explode('dipfile.com', $link)) > 1 ) {
                                     if (Check_Vip($viplist, $name) == true || Check_Vip2($viplist2, $name) == true) {
                                         if ($bot_bw == 'true') {
                                             $limit = "10 GB";
@@ -512,7 +585,6 @@ for ($i = 1; $i < 15; $i++) {
                                     if (Check_Vip($viplist, $name) == true || Check_Vip2($viplist2, $name) == true) {
                                         if ($bot_bw == 'true') {
                                             $limit = "10 GB";
-                                            
                                             $bandwith = Check_Bandwith($size_file, convert_size_bw($filesize), $limit);
                                             if ($bandwith != false) {
                                                 
@@ -1052,6 +1124,80 @@ for ($i = 1; $i < 15; $i++) {
                                         $so_sv  = $filenext[2] + 1;
                                     }
                                     
+                                }  elseif (count(explode('alfafile', $link)) > 1) {
+                                    if (Check_Vip($viplist, $name) == true || Check_Vip2($viplist2, $name) == true) {
+                                        if ($bot_bw == 'true') {
+                                            $limit    = "50 GB";
+                                            $bandwith = Check_Bandwith($size_file, convert_size_bw($filesize), $limit);
+                                            if ($bandwith != false) {
+                                                if (strpos($filesize, 'kb') != 0) {
+                                                    $entry1 .= Get_Link_Host($link, $alfafile[0], $alfafile[1], $ipp1);
+                                                    
+                                                    if (stristr($entry1, "Please try again")) {
+                                                    } elseif (stristr($entry1, "Link Dead")) {
+                                                    } else {
+                                                        $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                        Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                    }
+                                                    $so_sv = $alfafile[2] + 1;
+                                                } elseif (strpos($filesize, 'mb') != 0) {
+                                                    $size      = explode(".", $filesize);
+                                                    $filesizes = trim($size[0]);
+                                                    if ($filesize > 20480) {
+                                                        $entry1 = '' . $iconf . '[b][big]  [den]' . $host_check . '[/mau][vang] limit  5 GB [/mau] [br][color=purple] Link của bạn có size là [den](' . strtoupper($filesize) . ')  [/mau] [/big][/color] [/b]';
+                                                        if (stristr($entry1, "Please try again")) {
+                                                        } else {
+                                                            Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                        }
+                                                    } else {
+                                                        $entry1 .= Get_Link_Host($link, $alfafile[0], $alfafile[1], $download_file2, $ipmem);
+                                                        if (stristr($entry1, "Please try again")) {
+                                                        } elseif (stristr($entry1, "Link Dead")) {
+                                                        } else {
+                                                            $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                            Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                        }
+                                                        $so_sv = $alfafile[2] + 1;
+                                                    }
+                                                } elseif (strpos($filesize, 'gb') != 0) {
+                                                    $size      = explode(".", $filesize);
+                                                    $filesizes = trim($size[0]);
+                                                    if ($filesize > 20) {
+                                                        $entry1 = '' . $iconf . '[b][big]  [den]' . $host_check . '[/mau][vang] limit  5 GB [/mau] [br][color=purple] Link của bạn có size là [den](' . strtoupper($filesize) . ')  [/mau] [/big][/color] [/b]';
+                                                        if (stristr($entry1, "Please try again")) {
+                                                        } elseif (stristr($entry1, "Link Dead")) {
+                                                        } else {
+                                                            Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                        }
+                                                    } else {
+                                                        $entry1 .= Get_Link_Host($link, $alfafile[0], $alfafile[1], $ipp1);
+                                                        if (stristr($entry1, "Please try again")) {
+                                                        } else {
+                                                            $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                            Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                        }
+                                                        $so_sv = $alfafile[2] + 1;
+                                                    }
+                                                } else {
+                                                    $entry1 .= Get_Link_Host($link, $alfafile[0], $alfafile[1], $ipp1);
+                                                    if (stristr($entry1, "Please try again")) {
+                                                    } else {
+                                                        $entry1 .= '[br][br] [b][color=blue] Bandwidth[den] ' . $host_check . '[/mau] Used: [/color] [tim] ' . $bandwith['used'] . ' [/mau]    [color=blue] Bandwidth[den] ' . $host_check . '[/mau] Left: [/color] [tim] ' . $bandwith['remain'] . ' [/mau][/b]';
+                                                        Write_File($size_file, date('d/m/Y') . '|' . $bandwith['save'], 'w');
+                                                    }
+                                                    $so_sv = $alfafile[2] + 1;
+                                                }
+                                            } else {
+                                                $entry1 .= '[b][color=green] You\'ve used up ' . $limit . ' for ' . $host_check . ' today. [/color]  [br] [color=blue] Bạn đã sử dụng hết ' . $limit . ' băng thông ' . $host_check . ' trong hôm nay. [/color] [/b]';
+                                                
+                                            }
+                                        }
+                                    } elseif (Check_SuperAdmin($superadmin, $name) == true || Check_Admin($adminlist, $name) == true || Check_Manager($manager, $name) == true) {
+                                        
+                                        $entry1 = Get_Link_Host($link, $alfafile[0], $alfafile[1], $ipp1);
+                                        $so_sv  = $alfafile[2] + 1;
+                                    }
+                                    
                                 } elseif (count(explode('scribd.com', $link)) > 1) {
                                     
                                     // $icon = '[img]http://i.imgur.com/1GvSftn.png[/img]';
@@ -1162,7 +1308,23 @@ for ($i = 1; $i < 15; $i++) {
                                     // $icon = '[img]http://i.imgur.com/1GvSftn.png[/img]';
                                     //$iconf  = [img]http://jetdebrid.com/images/hosts/wushare.png[/img]';
                                     $entry1 = Get_Link_Host($link, $wushare[0], $wushare[1], $download_file2, $ipmem);
+                                   // $entry1 = $link.'+'.$wushare[0];
+								   
                                     $so_sv  = $wushare[2] + 1;
+                                    
+                                }  elseif (count(explode('prefiles', $link)) > 1) {
+                                    
+                                    // $icon = '[img]http://i.imgur.com/1GvSftn.png[/img]';
+                                    //$iconf  = [img]http://jetdebrid.com/images/hosts/prefiles.png[/img]';
+                                    $entry1 = Get_Link_Host($link, $prefiles[0], $prefiles[1], $download_file2, $ipmem);
+                                    $so_sv  = $prefiles[2] + 1;
+                                    
+                                }  elseif (count(explode('katfile', $link)) > 1) {
+                                    
+                                    // $icon = '[img]http://i.imgur.com/1GvSftn.png[/img]';
+                                    //$iconf  = [img]http://jetdebrid.com/images/hosts/katfile.png[/img]';
+                                    $entry1 = Get_Link_Host($link, $katfile[0], $katfile[1], $download_file2, $ipmem);
+                                    $so_sv  = $katfile[2] + 1;
                                     
                                 } elseif (count(explode('kingfiles', $link)) > 1) {
                                     
@@ -1190,13 +1352,13 @@ for ($i = 1; $i < 15; $i++) {
                                     //$iconf  = [img]http://i.imgur.com/FOtkbUJ.png[/img]';
                                     $entry1 = Get_Link_Host($link, $easybytez[0], $easybytez[1], $download_file2, $ipmem);
                                     $so_sv  = $easybytez[2] + 1;
-                                } elseif (count(explode('alfafile.net', $link)) > 1) {
+                                }/*  elseif (count(explode('alfafile.net', $link)) > 1) {
                                     
                                     // $icon = '[img]http://i.imgur.com/1GvSftn.png[/img]';
                                     //$iconf  = [img]https://alfafile.net/img/sep5.png[/img]';
                                     $entry1 = Get_Link_Host($link, $alfafile[0], $alfafile[1], $download_file2, $ipmem);
                                     $so_sv  = $alfafile[2] + 1;
-                                } elseif (count(explode('filejoker.net', $link)) > 1) {
+                                }  */elseif (count(explode('filejoker.net', $link)) > 1) {
                                     
                                     // $icon = '[img]http://i.imgur.com/1GvSftn.png[/img]';
                                     //$iconf  = [img]http://i.imgur.com/qZYMESx.png[/img]';

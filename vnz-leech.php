@@ -2,9 +2,9 @@
 //require_once("adminOnly.php");
 
 session_start();
-    
-    include('config.php');
-    include_once('functions.php');
+
+include('config.php');
+include_once('functions.php');
 $userinfo = array(
     'admin9' => 'khongnoidau1', //Hello...
     'quansky04' => 'quankun1' //Hello...
@@ -28,7 +28,7 @@ if (isset($_POST['username'])) {
 if ($_SESSION['username']):
 ?>
 <?php
-
+    
     //  printf ("<br/>Server load:".get_load()."%");
     $lang = array(
         'morehost' => 'More Host >>>',
@@ -184,6 +184,66 @@ if ($_SESSION['username']):
                 $_POST['userscloud1'],
                 $_POST['userscloud2'],
                 $_POST['userscloud3'],
+                "no"
+            );
+        }
+        //Config katfile.com
+        if (isset($_POST['katfile_enable'])) {
+            $cf_katfile = array(
+                $_POST['katfile1'],
+                $_POST['katfile2'],
+                $_POST['katfile3'],
+                $_POST['katfile4'],
+                $_POST['katfile5'],
+                "yes"
+            );
+        } else {
+            $cf_katfile = array(
+                $_POST['katfile1'],
+                $_POST['katfile2'],
+                $_POST['katfile3'],
+                $_POST['katfile4'],
+                $_POST['katfile5'],
+                "no"
+            );
+        }
+        //Config prefiles.com
+        if (isset($_POST['prefiles_enable'])) {
+            $cf_prefiles = array(
+                $_POST['prefiles1'],
+                $_POST['prefiles2'],
+                $_POST['prefiles3'],
+                $_POST['prefiles4'],
+                $_POST['prefiles5'],
+                "yes"
+            );
+        } else {
+            $cf_prefiles = array(
+                $_POST['prefiles1'],
+                $_POST['prefiles2'],
+                $_POST['prefiles3'],
+                $_POST['prefiles4'],
+                $_POST['prefiles5'],
+                "no"
+            );
+        }
+        //Config wushare.com
+        if (isset($_POST['wushare_enable'])) {
+            $cf_wushare = array(
+                $_POST['wushare1'],
+                $_POST['wushare2'],
+                $_POST['wushare3'],
+                $_POST['wushare4'],
+                $_POST['wushare5'],
+                "yes"
+            );
+        } else {
+            $cf_wushare = array(
+                $_POST['wushare1'],
+                $_POST['wushare2'],
+                $_POST['wushare3'],
+                $_POST['wushare4'],
+                $_POST['wushare5'],
                 "no"
             );
         }
@@ -1308,6 +1368,49 @@ if ($_SESSION['username']):
         ### Save Info to host.xml ###
         #############################
         
+        // katfile.com
+        unset($host->katfile->sv1);
+        $host->katfile->addChild('sv1', $cf_katfile[0]);
+        unset($host->katfile->sv2);
+        $host->katfile->addChild('sv2', $cf_katfile[1]);
+        unset($host->katfile->sv3);
+        $host->katfile->addChild('sv3', $cf_katfile[2]);
+        unset($host->katfile->sv4);
+        $host->katfile->addChild('sv4', $cf_katfile[3]);
+        unset($host->katfile->sv5);
+        $host->katfile->addChild('sv5', $cf_katfile[4]);
+        unset($host->katfile->work);
+        $host->katfile->addChild('work', $cf_katfile[5]);
+        
+        //prefiles.com
+        unset($host->prefiles->sv1);
+        $host->prefiles->addChild('sv1', $cf_prefiles[0]);
+        unset($host->prefiles->sv2);
+        $host->prefiles->addChild('sv2', $cf_prefiles[1]);
+        unset($host->prefiles->sv3);
+        $host->prefiles->addChild('sv3', $cf_prefiles[2]);
+        unset($host->prefiles->sv4);
+        $host->prefiles->addChild('sv4', $cf_prefiles[3]);
+        unset($host->prefiles->sv5);
+        $host->prefiles->addChild('sv5', $cf_prefiles[4]);
+        unset($host->prefiles->work);
+        $host->prefiles->addChild('work', $cf_prefiles[5]);
+        
+        //wushare.com
+
+        unset($host->wushare->sv1);
+        $host->wushare->addChild('sv1', $cf_wushare[0]);
+        unset($host->wushare->sv2);
+        $host->wushare->addChild('sv2', $cf_wushare[1]);
+        unset($host->wushare->sv3);
+        $host->wushare->addChild('sv3', $cf_wushare[2]);
+        unset($host->wushare->sv4);
+        $host->wushare->addChild('sv4', $cf_wushare[3]);
+        unset($host->wushare->sv5);
+        $host->wushare->addChild('sv5', $cf_wushare[4]);
+        unset($host->wushare->work);
+        $host->wushare->addChild('work', $cf_wushare[5]);
+        
         // userscloud.com
         unset($host->userscloud->sv1);
         $host->userscloud->addChild('sv1', $cf_userscloud[0]);
@@ -2060,7 +2163,7 @@ if ($_SESSION['username']):
 ?>
 </td><td width=30></td><td width=150>
 Total links: <?php
-    echo file_get_contents("log/total.txt");
+    echo file_get_contents("./log/total.txt");
 ?>
 </td><br>
 
@@ -2691,6 +2794,79 @@ Total links: <?php
 ?></textarea>
 		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='userscloud3'><?php
     echo $userscloudcom[2];
+?></textarea></td>
+</tr>
+
+		<tr><td width=30></td><td width=100>prefiles.com</td><td width=350>
+			<?php
+    if (strcmp($hostlist->prefiles->work, "no") == 0)
+        echo '<input type="checkbox" name="prefiles_enable" value="on">';
+    else
+        echo '<input type="checkbox" name="prefiles_enable" value="on" checked="yes">';
+?>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='prefiles1'><?php
+    echo $prefilescom[0];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='prefiles2'><?php
+    echo $prefilescom[1];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='prefiles3'><?php
+    echo $prefilescom[2];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='prefiles4'><?php
+    echo $prefilescom[3];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='prefiles5'><?php
+    echo $prefilescom[4];
+?></textarea></td>
+
+		<td width=30></td><td width=100>wushare.com</td><td width=350>
+			<?php
+    if (strcmp($hostlist->wushare->work, "no") == 0)
+        echo '<input type="checkbox" name="wushare_enable" value="on">';
+    else
+        echo '<input type="checkbox" name="wushare_enable" value="on" checked="yes">';
+?>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='wushare1'><?php
+    echo $wusharecom[0];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='wushare2'><?php
+    echo $wusharecom[1];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='wushare3'><?php
+    echo $wusharecom[2];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='wushare4'><?php
+    echo $wusharecom[3];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='wushare5'><?php
+    echo $wusharecom[4];
+?></textarea></td>
+
+
+
+
+		<td width=30></td><td width=100>katfile.com</td><td width=350>
+			<?php
+    if (strcmp($hostlist->katfile->work, "no") == 0)
+        echo '<input type="checkbox" name="katfile_enable" value="on">';
+    else
+        echo '<input type="checkbox" name="katfile_enable" value="on" checked="yes">';
+?>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='katfile1'><?php
+    echo $katfilecom[0];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='katfile2'><?php
+    echo $katfilecom[1];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='katfile3'><?php
+    echo $katfilecom[2];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='katfile4'><?php
+    echo $katfilecom[3];
+?></textarea>
+		<textarea onclick='javascript:this.focus();this.select()' rows='1' cols='1' style='width: 100%; height: 20px' name='katfile5'><?php
+    echo $katfilecom[4];
 ?></textarea></td>
 </tr>
 
@@ -3365,5 +3541,4 @@ else:
     </html>
 <?php
 endif;
-
 ?>

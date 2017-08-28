@@ -7,7 +7,7 @@ error_reporting(0);
 ini_set('display_errors', 0); 
 ######### Config FS/4S ##########
 $limitlinkfolder = 20;
-$limitmulti = 20;
+$limitmulti = 10;
 $limit_timeip = 10;
 
 //Config XML
@@ -95,8 +95,8 @@ $viplist = List_Vip();
 $blacklist = simplexml_load_file($config['blacklist']);
 
 
-$link_download = 'https://huyenthoai.pro/';
-$link_download1 = 'https://huyenthoai.pro/';
+$link_download = 'http://huyenthoai.pro/';
+$link_download1 = 'http://huyenthoai.pro/';
 $link_bot = 'http://kenvip.itsuck.net/';
 ################### Get Host Support ###################
 $sp = "";
@@ -185,7 +185,7 @@ foreach ($hostlist->children() as $child) {
         elseif ($child->getName() == "extmatrix")
             $sp .= "extmatrix.com, ";
         elseif ($child->getName() == "depfile")
-            $sp .= "depfile.com, ";
+            $sp .= "depfile.com, dipfile.com, depfile.us, ";
         elseif ($child->getName() == "ulto")
             $sp .= "ul.to, ";
 		elseif ($child->getName() == "easybytez")
@@ -257,7 +257,11 @@ foreach ($hostlist->children() as $child) {
 		elseif ($child->getName() == "mediafree")
             $sp .= "mediafree.co, ";						
 		elseif ($child->getName() == "openload")
-            $sp .= "openload.co, ";						
+            $sp .= "openload.co, ";										
+		elseif ($child->getName() == "prefiles")
+            $sp .= "prefiles.com, ";											
+		elseif ($child->getName() == "katfile")
+            $sp .= "katfile.com, ";						
 							
         else
             $sp .= strtolower($child->getName()) . ", ";
@@ -492,50 +496,75 @@ $uploadrocket_mem = $uploadrocketnet[$sv_uploadrocket];
 $uploadrocket          = explode('|', $uploadrocket_mem . '|' . $sv_uploadrocket);
 
 //kingfiles.net
-$kingfiles     = array(
+$kingfilesnet     = array(
     $hostlist->kingfiles->sv1,
     $hostlist->kingfiles->sv2,
     $hostlist->kingfiles->sv3,
     $hostlist->kingfiles->sv4,
     $hostlist->kingfiles->sv5
 );
-$sv_kingfiles       = rand(0, count($kingfiles) - 1);
-$kingfiles_mem = $kingfiles[$sv_kingfiles];
+$sv_kingfiles       = rand(0, count($kingfilesnet) - 1);
+$kingfiles_mem = $kingfilesnet[$sv_kingfiles];
 $kingfiles          = explode('|', $kingfiles_mem . '|' . $sv_kingfiles);
 
+//katfile.com
+$katfilecom     = array(
+    $hostlist->katfile->sv1,
+    $hostlist->katfile->sv2,
+    $hostlist->katfile->sv3,
+    $hostlist->katfile->sv4,
+    $hostlist->katfile->sv5
+);
+$sv_katfile       = rand(0, count($katfilecom) - 1);
+$katfile_mem = $katfilecom[$sv_katfile];
+$katfile          = explode('|', $katfile_mem . '|' . $sv_katfile);
+
+//prefiles.com
+$prefilescom     = array(
+    $hostlist->prefiles->sv1,
+    $hostlist->prefiles->sv2,
+    $hostlist->prefiles->sv3,
+    $hostlist->prefiles->sv4,
+    $hostlist->prefiles->sv5
+);
+$sv_prefiles       = rand(0, count($prefilescom) - 1);
+$prefiles_mem = $prefilescom[$sv_prefiles];
+$prefiles          = explode('|', $prefiles_mem . '|' . $sv_prefiles);
+
 //wushare.com
-$wushare     = array(
+$wusharecom     = array(
     $hostlist->wushare->sv1,
     $hostlist->wushare->sv2,
     $hostlist->wushare->sv3,
     $hostlist->wushare->sv4,
     $hostlist->wushare->sv5
 );
-$sv_wushare       = rand(0, count($wushare) - 1);
-$wushare_mem = $wushare[$sv_wushare];
+$sv_wushare       = rand(0, count($wusharecom) - 1);
+$wushare_mem = $wusharecom[$sv_wushare];
 $wushare          = explode('|', $wushare_mem . '|' . $sv_wushare);
 
 //filespace.com
-$filespace     = array(
+$filespacecom     = array(
     $hostlist->filespace->sv1,
     $hostlist->filespace->sv2,
     $hostlist->filespace->sv3,
     $hostlist->filespace->sv4,
     $hostlist->filespace->sv5
 );
-$sv_filespace       = rand(0, count($filespace) - 1);
-$filespace_mem = $filespace[$sv_filespace];
+$sv_filespace       = rand(0, count($filespacecom) - 1);
+$filespace_mem = $filespacecom[$sv_filespace];
 $filespace          = explode('|', $filespace_mem . '|' . $sv_filespace);
+
 //upload.cd
-$uploadcd     = array(
+$uploadcdn     = array(
     $hostlist->uploadcd->sv1,
     $hostlist->uploadcd->sv2,
     $hostlist->uploadcd->sv3,
     $hostlist->uploadcd->sv4,
     $hostlist->uploadcd->sv5
 );
-$sv_uploadcd      = rand(0, count($uploadcd) - 1);
-$uploadcd_mem = $uploadcd[$sv_uploadcd];
+$sv_uploadcd      = rand(0, count($uploadcdn) - 1);
+$uploadcd_mem = $uploadcdn[$sv_uploadcd];
 $uploadcd          = explode('|', $uploadcd_mem . '|' . $sv_uploadcd);
 
 //24uploading.com

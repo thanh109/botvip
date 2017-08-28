@@ -52,27 +52,27 @@ for ($i = 2; $i < 15; $i++) {
         $link = explode('<a class="autoLink" href="', $chat);
         $link = explode('"', $link[1]);
         $link = $link[0];
-        if (!$link) { 
-				
-			
+        if (!$link) {
+            
+            
             if ($bot_talk == true) { //Neu bot talk on
                 $check = Check_Chat($chat, $user_file, $id_user);
                 if ($check == true);
                 else {
                     if (strpos(strtolower($chat), 'vip') != 0 && strpos(strtolower($chat), ':tim') != 0) {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[b][color=blue]" . $name . "[/color], i'm here[/b] :toiha ";
                         post_cbox($mess);
                     } elseif (strpos(strtolower($chat), 'cho mình hỏi') != 0 || strpos(strtolower($chat), 'tớ hỏi chút') != 0) {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess1 = "[b][color=blue]" . $name . "[/b][/color] cứ hỏi đi không ai trả lời đâu hehe ";
                         $mess2 = "[b][color=blue]" . $name . "[/b][/color] vạch đầu gối lên mà hỏi cho nhanh ";
                         $mess3 = "[b][color=blue]" . $name . "[/b][/color] lấy thang không? cho mượn cái thang lên mà hỏi ông trời ý ";
@@ -85,34 +85,34 @@ for ($i = 2; $i < 15; $i++) {
                             $mess4
                         );
                         $mess   = $mesall[rand(0, count($mesall) - 1)];
-                       // post_cbox($mess);
+                        // post_cbox($mess);
                     } elseif (strpos(strtolower($chat), 'magnet') != 0 || strpos(strtolower($chat), 'torrent') != 0) {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[b][color=blue]" . $name . "  [/color][color=red]Torent for V.I.P member. if u'r V.I.P  click here : [/color][url=http://torrent.vnz-leech.com/]http://torrent.vnz-leech.com/[/url][/b] ";
                         post_cbox($mess);
                     } elseif (strpos($chat, 'thank') != 0 || strpos($chat, 'Thanks') != 0 || strpos(strtolower($chat), 'cam on') != 0 || strpos(strtolower($chat), 'cám on') != 0 || strpos(strtolower($chat), 'cảm ơn') != 0) {
-                        if (Check_Vip($viplist, $name) == true|| Check_Vip2($viplist2, $name) == true) {
-						//Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
-                        $mess = '[b][color=blue]' . $name . '[/color][/b] : You are welcome :D';
-                        	post_cbox($mess);
-						}
-                    } elseif (strpos(strtolower($chat), 'check sp') != 0 || strpos(strtolower($chat), 'check support') != 0) {
-                        if (Check_SuperAdmin($superadmin, $name) == true || Check_Admin($adminlist, $name) == true || Check_Manager($manager, $name) == true || Check_Vip($viplist, $name) == true|| Check_Vip2($viplist2, $name) == true) {
-                         //Luu file + time
+                        if (Check_Vip($viplist, $name) == true || Check_Vip2($viplist2, $name) == true) {
+                            //Luu file + time
+                            $log  = fopen($user_file, "a", 1);
                             $data = $id_user . '|';
-							Write_File($user_file, $data, 'a', 1);
-							$numhost = explode(",",$bot_support);
-							$numhost = count($numhost);
-							$mess = "[b][color=blue]".$name."[/color] :chi [center][color=purple]I only support [la][big](".$numhost." Host)[/big][/mau] for VIP Member:[/color][br][color=green]".$bot_support."[/color][/center][/b]";
-							post_cbox($mess);
+                            fwrite($log, $data);
+                            fclose($log);
+                            $mess = '[b][color=blue]' . $name . '[/color][/b] : You are welcome :D';
+                            post_cbox($mess);
+                        }
+                    } elseif (strpos(strtolower($chat), 'check sp') != 0 || strpos(strtolower($chat), 'check support') != 0) {
+                        if (Check_SuperAdmin($superadmin, $name) == true || Check_Admin($adminlist, $name) == true || Check_Manager($manager, $name) == true || Check_Vip($viplist, $name) == true || Check_Vip2($viplist2, $name) == true) {
+                            //Luu file + time
+                            $data = $id_user . '|';
+                            Write_File($user_file, $data, 'a', 1);
+                            $numhost = explode(",", $bot_support);
+                            $numhost = count($numhost);
+                            $mess    = "[b][color=blue]" . $name . "[/color] :chi [center][color=purple]I only support [la][big](" . $numhost . " Host)[/big][/mau] for VIP Member:[/color][br][color=green]" . $bot_support . "[/color][/center][/b]";
+                            post_cbox($mess);
                         }
                     }
                 }
@@ -136,10 +136,10 @@ for ($i = 2; $i < 15; $i++) {
                         if ($check == true);
                         else {
                             //Luu file + time
-                             $log = fopen($user_file,"a",1);
-						$data = $id_user.'|';
-						fwrite($log, $data);
-						fclose($log);
+                            $log  = fopen($user_file, "a", 1);
+                            $data = $id_user . '|';
+                            fwrite($log, $data);
+                            fclose($log);
                             $sadm = "";
                             for ($i = 0; $i < count($superadmin); $i++) {
                                 $sadm .= $superadmin->name[$i] . ', ';
@@ -162,10 +162,10 @@ for ($i = 2; $i < 15; $i++) {
                         if ($check == true);
                         else {
                             //Luu file + time
-                             $log = fopen($user_file,"a",1);
-						$data = $id_user.'|';
-						fwrite($log, $data);
-						fclose($log);
+                            $log  = fopen($user_file, "a", 1);
+                            $data = $id_user . '|';
+                            fwrite($log, $data);
+                            fclose($log);
                             
                             if ($nick != "") {
                                 //Kiem tra nick nguoi ra lenh co la super admin hay khong?
@@ -187,7 +187,7 @@ for ($i = 2; $i < 15; $i++) {
                                         elseif (Check_Vip($viplist, $nick) == true) {
                                         $mess = "[center][b][color=purple]" . $nick . "[/color] [color=red]" . $phrase['vip_exist'] . "[/color][/b][/center]";
                                     }
-                                     //Kiem tra xem nick da co trong list vip chua?
+                                    //Kiem tra xem nick da co trong list vip chua?
                                         elseif (Check_Vip2($viplist2, $nick) == true) {
                                         $mess = "[center][b][color=purple]" . $nick . "[/color] [color=red]" . $phrase['vip_exist'] . "[/color][/b][/center]";
                                     }
@@ -225,10 +225,10 @@ for ($i = 2; $i < 15; $i++) {
                         if ($check == true);
                         else {
                             //Luu file + time
-                             $log = fopen($user_file,"a",1);
-						$data = $id_user.'|';
-						fwrite($log, $data);
-						fclose($log);
+                            $log  = fopen($user_file, "a", 1);
+                            $data = $id_user . '|';
+                            fwrite($log, $data);
+                            fclose($log);
                             
                             if ($nick != "") {
                                 //Kiem tra nick nguoi ra lenh co la super admin hay khong?
@@ -264,10 +264,10 @@ for ($i = 2; $i < 15; $i++) {
                         if ($check == true);
                         else {
                             //Luu file + time
-                             $log = fopen($user_file,"a",1);
-						$data = $id_user.'|';
-						fwrite($log, $data);
-						fclose($log);
+                            $log  = fopen($user_file, "a", 1);
+                            $data = $id_user . '|';
+                            fwrite($log, $data);
+                            fclose($log);
                             $adm = "";
                             for ($i = 0; $i < count($adminlist); $i++) {
                                 $adm .= $adminlist->name[$i] . ', ';
@@ -289,10 +289,10 @@ for ($i = 2; $i < 15; $i++) {
                         if ($check == true);
                         else {
                             //Luu file + time
-                             $log = fopen($user_file,"a",1);
-						$data = $id_user.'|';
-						fwrite($log, $data);
-						fclose($log);
+                            $log  = fopen($user_file, "a", 1);
+                            $data = $id_user . '|';
+                            fwrite($log, $data);
+                            fclose($log);
                             
                             if ($nick != "") {
                                 //Kiem tra nick nguoi ra lenh co la super admin hay khong?
@@ -314,7 +314,7 @@ for ($i = 2; $i < 15; $i++) {
                                         elseif (Check_Vip($viplist, $nick) == true) {
                                         $mess = "[center][b][color=purple]" . $nick . "[/color] [color=red]" . $phrase['vip_exist'] . "[/color][/b][/center]";
                                     }
-                                     //Kiem tra xem nick da co trong list vip chua?
+                                    //Kiem tra xem nick da co trong list vip chua?
                                         elseif (Check_Vip2($viplist2, $nick) == true) {
                                         $mess = "[center][b][color=purple]" . $nick . "[/color] [color=red]" . $phrase['vip_exist'] . "[/color][/b][/center]";
                                     }
@@ -352,10 +352,10 @@ for ($i = 2; $i < 15; $i++) {
                         if ($check == true);
                         else {
                             //Luu file + time
-                             $log = fopen($user_file,"a",1);
-						$data = $id_user.'|';
-						fwrite($log, $data);
-						fclose($log);
+                            $log  = fopen($user_file, "a", 1);
+                            $data = $id_user . '|';
+                            fwrite($log, $data);
+                            fclose($log);
                             
                             if ($nick != "") {
                                 //Kiem tra nick nguoi ra lenh co la super admin hay khong?
@@ -398,10 +398,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Bắt đầu get link![/color][br][color=green]Được kích hoạt bởi[/color][color=red] " . $name . " [/color][/b] [/center]";
                         post_cbox($mess);
                     }
@@ -413,28 +413,28 @@ for ($i = 2; $i < 15; $i++) {
                     $command = $stop_bot;
                     Del_Mess_One($name, $command);
                     $check = Check_Chat($chat, $user_file, $id_user);
-				
+                    
                     if ($check == true);
                     else {
-						if (Check_SuperAdmin($superadmin, $name) == true) {
-							//Set option stop
-							$info = simplexml_load_file($config['cbox_info']);
-							unset($info->work);
-							$info->addChild('work', "false");
-							$info->asXML($config['cbox_info']);
-							
-							//Luu file + time
-							$log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
-							$mess = "[center][b][color=blue]Đã tắt getlink [/color][/b] bye [/center]";
-							post_cbox($mess);
-						}else {
-							$mess = "[center][b][color=blue]Không Tắt !!! [/color][/b] :2haha [/center]";
-							post_cbox($mess);
-						}
-					}
+                        if (Check_SuperAdmin($superadmin, $name) == true) {
+                            //Set option stop
+                            $info = simplexml_load_file($config['cbox_info']);
+                            unset($info->work);
+                            $info->addChild('work', "false");
+                            $info->asXML($config['cbox_info']);
+                            
+                            //Luu file + time
+                            $log  = fopen($user_file, "a", 1);
+                            $data = $id_user . '|';
+                            fwrite($log, $data);
+                            fclose($log);
+                            $mess = "[center][b][color=blue]Đã tắt getlink [/color][/b] bye [/center]";
+                            post_cbox($mess);
+                        } else {
+                            $mess = "[center][b][color=blue]Không Tắt !!! [/color][/b] :2haha [/center]";
+                            post_cbox($mess);
+                        }
+                    }
                 }
                 
                 //Start Bot multi
@@ -452,10 +452,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Bắt đầu get link Multi/Folder![/color][br][color=green]Được kích hoạt bởi[/color][color=red] " . $name . " [/color][/b] [/center]";
                         post_cbox($mess);
                     }
@@ -467,29 +467,29 @@ for ($i = 2; $i < 15; $i++) {
                     $command = $stop_bot_multi;
                     Del_Mess_One($name, $command);
                     $check = Check_Chat($chat, $user_file, $id_user);
-				
+                    
                     if ($check == true);
                     else {
-						if (Check_SuperAdmin($superadmin, $name) == true || Check_Admin($adminlist, $name) == true || Check_Manager($manager, $name) == true) {
-							//Set option stop
-							$info = simplexml_load_file($config['cbox_info']);
-							unset($info->multiwork);
-							$info->addChild('multiwork', "false");
-							$info->asXML($config['cbox_info']);
-							
-							//Luu file + time
-							$log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
-							$mess = "[center][b][color=blue]Đã tắt getlink Multi/Folder![/color][/b] bye [/center]";
-							post_cbox($mess);
-						}else {
-							$mess = "[center][b][color=blue]Không Tắt !!! [/color][/b] :2haha [/center]";
-							post_cbox($mess);
-						}
-					}
-                }                
+                        if (Check_SuperAdmin($superadmin, $name) == true || Check_Admin($adminlist, $name) == true || Check_Manager($manager, $name) == true) {
+                            //Set option stop
+                            $info = simplexml_load_file($config['cbox_info']);
+                            unset($info->multiwork);
+                            $info->addChild('multiwork', "false");
+                            $info->asXML($config['cbox_info']);
+                            
+                            //Luu file + time
+                            $log  = fopen($user_file, "a", 1);
+                            $data = $id_user . '|';
+                            fwrite($log, $data);
+                            fclose($log);
+                            $mess = "[center][b][color=blue]Đã tắt getlink Multi/Folder![/color][/b] bye [/center]";
+                            post_cbox($mess);
+                        } else {
+                            $mess = "[center][b][color=blue]Không Tắt !!! [/color][/b] :2haha [/center]";
+                            post_cbox($mess);
+                        }
+                    }
+                }
                 
                 //Start bot notify
                 $chat = trim($chat);
@@ -506,10 +506,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Vâng thưa sếp[/color][color=red] " . $name . " [/color][br][color=blue]Bắt đầu thông báo cho thành viên[/color][/b] :phe [/center]";
                         post_cbox($mess);
                     }
@@ -530,10 +530,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Vâng thưa sếp[/color][color=red] " . $name . " [/color][br][color=blue]Dừng thông báo cho thành viên[/color][/b] :w8 [/center]";
                         post_cbox($mess);
                     }
@@ -555,10 +555,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Vâng thưa sếp[/color][color=red] " . $name . " [/color][br][color=blue]Kích hoạt chế độ giải trí - xả stress[/color][/b] :2do [/center]";
                         post_cbox($mess);
                     }
@@ -579,10 +579,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Vâng thưa sếp[/color][color=red] " . $name . " [/color][br][color=blue]Ngừng chế độ giải trí - xả stress[/color][/b] :3bye [/center]";
                         post_cbox($mess);
                     }
@@ -604,10 +604,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Vâng thưa sếp[/color][color=red] " . $name . " [/color][br][color=blue]Khởi động skill chém gió thành bão[/color][/b] :mm [/center]";
                         post_cbox($mess);
                     }
@@ -628,10 +628,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Vâng thưa sếp[/color][color=red] " . $name . " [/color][br][color=blue]Tạm ngưng chém gió quy ẩn giang hồ[/color][/b] :siunhan [/center]";
                         post_cbox($mess);
                     }
@@ -654,10 +654,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Vâng thưa sếp[/color][color=red] " . $name . " [/color][br][color=green]Bắt đầu ZipLink tất cả các link sẽ get![/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -678,10 +678,10 @@ for ($i = 2; $i < 15; $i++) {
                         $info->asXML($config['cbox_info']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=blue]Vâng thưa sếp[/color][color=red] " . $name . " [/color][br][color=green]Đã dừng Ziplink các link sẽ get[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -697,10 +697,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mod = "";
                         for ($i = 0; $i < count($manager); $i++) {
                             $mod .= $manager->name[$i] . ', ';
@@ -722,10 +722,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             //Kiem tra nick nguoi ra lenh la admin tro len hay khong?
@@ -781,10 +781,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             //Kiem tra nick nguoi ra lenh la admin tro len hay khong?
@@ -820,10 +820,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $bot = "";
                         for ($i = 0; $i < count($bots); $i++) {
                             $bot .= $bots->name[$i] . ', ';
@@ -845,10 +845,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             //Kiem tra nick nguoi ra lenh la manager tro len hay khong?
@@ -870,7 +870,6 @@ for ($i = 2; $i < 15; $i++) {
                                     elseif (Check_Vip($viplist, $nick) == true) {
                                     $mess = "[center][b][color=purple]" . $nick . "[/color] [color=red]" . $phrase['vip_exist'] . "[/color][/b][/center]";
                                 }
-                                
                                 //Kiem tra xem nick da co trong list vip chua?
                                     elseif (Check_Vip2($viplist2, $nick) == true) {
                                     $mess = "[center][b][color=purple]" . $nick . "[/color] [color=red]" . $phrase['vip_exist'] . "[/color][/b][/center]";
@@ -909,10 +908,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             //Kiem tra nick nguoi ra lenh la manager tro len hay khong?
@@ -951,10 +950,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             //Kiem tra nick nguoi ra lenh la manager tro len hay khong?
@@ -976,7 +975,6 @@ for ($i = 2; $i < 15; $i++) {
                                     elseif (Check_Vip($viplist, $nick) == true) {
                                     $mess = "[center][b][color=purple]" . $nick . "[/color] [color=red]" . $phrase['vip_exist'] . "[/color][/b][/center]";
                                 }
-                                
                                 //Kiem tra xem nick da co trong list vip chua?
                                     elseif (Check_Vip2($viplist2, $nick) == true) {
                                     $mess = "[center][b][color=purple]" . $nick . "[/color] [color=red]" . $phrase['vip_exist'] . "[/color][/b][/center]";
@@ -1015,10 +1013,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             //Kiem tra nick nguoi ra lenh la manager tro len hay khong?
@@ -1054,10 +1052,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $bl = "";
                         for ($i = 0; $i < count($blacklist); $i++) {
                             $bl .= $blacklist->name[$i] . ', ';
@@ -1097,10 +1095,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             //Kiem tra nick nguoi ra lenh la manager tro len hay khong?
@@ -1168,10 +1166,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             //Kiem tra nick nguoi ra lenh la manager tro len hay khong?
@@ -1231,10 +1229,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             
@@ -1314,10 +1312,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         if ($nick != "") {
                             $total = Del_Mess_Nick($nick);
@@ -1342,10 +1340,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         
                         //Kiem tra nick nguoi ra lenh la super admin hay admin khong?
                         if (Check_SuperAdmin($superadmin, $name) == true || Check_Admin($adminlist, $name) == true) {
@@ -1375,10 +1373,10 @@ for ($i = 2; $i < 15; $i++) {
                     if ($check == true);
                     else {
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b][color=Green]Support/Hỗ trợ:[/color][color=Purple] " . $bot_support . " [/color][br][color=Green]Not Support/Không hỗ trợ:[/color][color=Purple] " . $bot_not_support . " [/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1402,10 +1400,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Fshare.Vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1428,15 +1426,15 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Fshare.vn[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
-				
+                
                 //Start kingfiles
                 $chat = trim($chat);
                 if (count(explode($kingfiles_on, strtolower($chat))) > 1) {
@@ -1453,10 +1451,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Kingfiles.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1479,16 +1477,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Kingfiles.net[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-				//Start wushare
+                //Start wushare
                 $chat = trim($chat);
                 if (count(explode($wushare_on, strtolower($chat))) > 1) {
                     $command = $wushare_on;
@@ -1504,10 +1502,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Wushare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1530,16 +1528,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Wushare.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-				//Start Filespace.com
+                //Start Filespace.com
                 $chat = trim($chat);
                 if (count(explode($filespace_on, strtolower($chat))) > 1) {
                     $command = $filespace_on;
@@ -1555,10 +1553,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Filespace.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1581,16 +1579,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Filespace.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-				//Start subyshare
+                //Start subyshare
                 $chat = trim($chat);
                 if (count(explode($subyshare_on, strtolower($chat))) > 1) {
                     $command = $subyshare_on;
@@ -1606,10 +1604,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]subyshare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1632,16 +1630,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]subyshare.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
-				
-				//Start soundcloud
+                
+                //Start soundcloud
                 $chat = trim($chat);
                 if (count(explode($soundcloud_on, strtolower($chat))) > 1) {
                     $command = $soundcloud_on;
@@ -1657,10 +1655,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]soundcloud.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1683,16 +1681,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]soundcloud.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start filesflash
+                //Start filesflash
                 $chat = trim($chat);
                 if (count(explode($filesflash_on, strtolower($chat))) > 1) {
                     $command = $filesflash_on;
@@ -1708,10 +1706,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]filesflash.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1734,16 +1732,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]filesflash.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start hugefiles
+                //Start hugefiles
                 $chat = trim($chat);
                 if (count(explode($hugefiles_on, strtolower($chat))) > 1) {
                     $command = $hugefiles_on;
@@ -1759,10 +1757,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]hugefiles.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1785,16 +1783,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]hugefiles.net[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start scribd
+                //Start scribd
                 $chat = trim($chat);
                 if (count(explode($scribd_on, strtolower($chat))) > 1) {
                     $command = $scribd_on;
@@ -1810,10 +1808,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]scribd.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1836,16 +1834,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]scribd.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start tusfiles
+                //Start tusfiles
                 $chat = trim($chat);
                 if (count(explode($tusfiles_on, strtolower($chat))) > 1) {
                     $command = $tusfiles_on;
@@ -1861,10 +1859,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]tusfiles.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1887,16 +1885,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]tusfiles.net[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start speedyshare
+                //Start speedyshare
                 $chat = trim($chat);
                 if (count(explode($speedyshare_on, strtolower($chat))) > 1) {
                     $command = $speedyshare_on;
@@ -1912,10 +1910,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]speedyshare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1938,16 +1936,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]speedyshare.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start ul.to
+                //Start ul.to
                 $chat = trim($chat);
                 if (count(explode($ulto_on, strtolower($chat))) > 1) {
                     $command = $ulto_on;
@@ -1963,10 +1961,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]ul.to[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -1989,16 +1987,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]ul.to[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start datafile
+                //Start datafile
                 $chat = trim($chat);
                 if (count(explode($datafile_on, strtolower($chat))) > 1) {
                     $command = $datafile_on;
@@ -2014,10 +2012,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]datafile.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2040,16 +2038,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]datafile.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start filesmonster
+                //Start filesmonster
                 $chat = trim($chat);
                 if (count(explode($filesmonster_on, strtolower($chat))) > 1) {
                     $command = $filesmonster_on;
@@ -2065,10 +2063,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]filesmonster.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2091,16 +2089,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]filesmonster.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start depfile
+                //Start depfile
                 $chat = trim($chat);
                 if (count(explode($depfile_on, strtolower($chat))) > 1) {
                     $command = $depfile_on;
@@ -2116,10 +2114,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]depfile.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2142,16 +2140,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]depfile.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start uploading
+                //Start uploading
                 $chat = trim($chat);
                 if (count(explode($uploading_on, strtolower($chat))) > 1) {
                     $command = $uploading_on;
@@ -2167,10 +2165,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]uploading.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2193,16 +2191,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]uploading.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start vipfile
+                //Start vipfile
                 $chat = trim($chat);
                 if (count(explode($vipfile_on, strtolower($chat))) > 1) {
                     $command = $vipfile_on;
@@ -2218,10 +2216,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]vip-file.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2244,16 +2242,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]vip-file.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start nowdownload.ch
+                //Start nowdownload.ch
                 $chat = trim($chat);
                 if (count(explode($nowdownload_on, strtolower($chat))) > 1) {
                     $command = $nowdownload_on;
@@ -2269,10 +2267,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]nowdownload.ch[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2295,16 +2293,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]nowdownload.ch[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start shareflare.com
+                //Start shareflare.com
                 $chat = trim($chat);
                 if (count(explode($shareflare_on, strtolower($chat))) > 1) {
                     $command = $shareflare_on;
@@ -2320,10 +2318,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]shareflare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2346,10 +2344,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]shareflare.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
@@ -2371,10 +2369,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]yunfile.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2397,16 +2395,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]yunfile.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start yunfile.com
+                //Start yunfile.com
                 $chat = trim($chat);
                 if (count(explode($yunfilecom_on, strtolower($chat))) > 1) {
                     $command = $yunfilecom_on;
@@ -2422,10 +2420,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]yunfile.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2448,16 +2446,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]yunfile.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start sendspace.com
+                //Start sendspace.com
                 $chat = trim($chat);
                 if (count(explode($sendspacecom_on, strtolower($chat))) > 1) {
                     $command = $sendspacecom_on;
@@ -2473,10 +2471,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]sendspace.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2499,16 +2497,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]sendspace.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start onefichier.com
+                //Start onefichier.com
                 $chat = trim($chat);
                 if (count(explode($onefichiercom_on, strtolower($chat))) > 1) {
                     $command = $onefichiercom_on;
@@ -2524,10 +2522,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]1fichier.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2550,16 +2548,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]1fichier.com[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               //Start littlebyte.net
+                //Start littlebyte.net
                 $chat = trim($chat);
                 if (count(explode($littlebyte_on, strtolower($chat))) > 1) {
                     $command = $littlebyte_on;
@@ -2575,10 +2573,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]littlebyte.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2601,16 +2599,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]littlebyte.net[/color] [/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-               
+                
                 
                 //Start share-oneline
                 $chat = trim($chat);
@@ -2628,10 +2626,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Share-Online.Biz[/color] [/b][/center]";
                         post_cbox($mess);
                     }
@@ -2653,10 +2651,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Share-Online.Biz[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2679,10 +2677,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Nitroflare.com[/color] [color=red] " . $proxyfs . " [/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2704,16 +2702,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]NitroFlare.com[/color] [color=red] " . $proxyfs . " [/color][/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-                                
+                
                 //Start secureupload
                 $chat = trim($chat);
                 if (count(explode($secureupload_on, strtolower($chat))) > 1) {
@@ -2730,10 +2728,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Secureupload.eu[/color] [color=red] " . $proxyfs . " [/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2755,15 +2753,15 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Secureupload.eu[/color] [color=red] " . $proxyfs . " [/color][/b][/center]";
                         post_cbox($mess);
                     }
                 }
-                                
+                
                 //Start salefiles
                 $chat = trim($chat);
                 if (count(explode($salefiles_on, strtolower($chat))) > 1) {
@@ -2780,10 +2778,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Salefiles.com[/color] [color=red] " . $proxyfs . " [/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2805,10 +2803,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Salefiles.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2831,10 +2829,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]4share.vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2856,10 +2854,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]4share.vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2882,10 +2880,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         //	$mess = "[center][b] [color=red]".$name."[/color][br][color=green]Bắt đầu get link[/color] [color=blue]4share.vn[/color] [color=red] ".$proxy4s." [/color][/b][/center]";
                         //	post_cbox($mess);
                     }
@@ -2907,10 +2905,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         //	$mess = "[center][b] [color=red]".$name."[/color][br][color=green]Đã dừng get link[/color] [color=blue]4share.vn[/color] [color=red] ".$proxy4s." [/color][/b][/center]";
                         //	post_cbox($mess);
                     }
@@ -2933,10 +2931,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Share.vnn.vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2958,10 +2956,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Share.vnn.vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -2984,10 +2982,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Tenlua.vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3009,10 +3007,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Tenlua.vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3035,10 +3033,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Upfile.vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3060,10 +3058,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Upfile.vn[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3086,10 +3084,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Mediafire.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3111,10 +3109,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Mediafire.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3137,10 +3135,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Netload.in[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3162,10 +3160,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Netload.in[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3188,10 +3186,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Uploaded.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3213,10 +3211,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Uploaded.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3239,10 +3237,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Rapidgator.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3264,16 +3262,16 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Rapidgator.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
-                               
+                
                 //Start hitfile
                 $chat = trim($chat);
                 if (count(explode($hitfile_on, strtolower($chat))) > 1) {
@@ -3290,10 +3288,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Hitfile.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3315,10 +3313,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Hitfile.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3341,10 +3339,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Letitbit.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3366,17 +3364,17 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Letitbit.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
                 }
                 
                 
-                             
+                
                 //Start novafile
                 $chat = trim($chat);
                 if (count(explode($novafile_on, strtolower($chat))) > 1) {
@@ -3393,10 +3391,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Novafile.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3418,10 +3416,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Novafile.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3444,10 +3442,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Turbobit.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3469,10 +3467,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Turbobit.net[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3495,10 +3493,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Ryushare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3520,10 +3518,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Ryushare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3546,10 +3544,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Filefactory.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3571,10 +3569,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Filefactory.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3597,10 +3595,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Filepost.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3622,10 +3620,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Filepost.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3648,10 +3646,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]4shared.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3673,10 +3671,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]4shared.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3699,10 +3697,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Depositfiles.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3724,10 +3722,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Depositfiles.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3750,10 +3748,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Terafile.co[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3775,10 +3773,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Terafile.co[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3801,10 +3799,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, 'a', 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Oboom.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3826,10 +3824,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Oboom.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3852,10 +3850,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Bitshare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3877,10 +3875,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Bitshare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3903,10 +3901,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Uptobox.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3928,10 +3926,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Uptobox.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3954,10 +3952,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Extmatrix.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -3979,10 +3977,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Extmatrix.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4005,10 +4003,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Mega.co.nz[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4030,10 +4028,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Mega.co.nz[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4056,10 +4054,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Freakshare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4081,10 +4079,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Freakshare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4107,10 +4105,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Firedrive.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4132,10 +4130,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Firedrive.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4158,10 +4156,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Uploadable.ch[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4183,10 +4181,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Uploadable.ch[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4209,10 +4207,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Zippyshare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4234,10 +4232,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Zippyshare.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4260,10 +4258,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Keep2share.cc[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4285,10 +4283,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Keep2share.cc[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4311,10 +4309,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Megashares.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4336,10 +4334,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Megashares.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4362,10 +4360,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]Youtube.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4387,10 +4385,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]Youtube.com[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4599,10 +4597,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Bắt đầu get link[/color] [color=blue]tất cả các File Host[/color][/b][/center]";
                         post_cbox($mess);
                     }
@@ -4809,10 +4807,10 @@ for ($i = 2; $i < 15; $i++) {
                         $host->asXML($config['hostlist']);
                         
                         //Luu file + time
-                        $log = fopen($user_file,"a",1);
-							$data = $id_user.'|';
-							fwrite($log, $data);
-							fclose($log);
+                        $log  = fopen($user_file, "a", 1);
+                        $data = $id_user . '|';
+                        fwrite($log, $data);
+                        fclose($log);
                         $mess = "[center][b] [color=red]" . $name . "[/color][br][color=green]Đã dừng get link[/color] [color=blue]tất cả các File Host[/color][/b][/center]";
                         post_cbox($mess);
                     }
